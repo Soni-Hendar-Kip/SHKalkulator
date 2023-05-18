@@ -8,13 +8,14 @@ import javax.swing.*;
      * @author Soni Hendarkanto PTI 4B
      * With Apache NetBeans IDE 16, Belsoft JAVA JDK 19
      * on Linux Mint 21.1 "VERA" Cinnamon Desktop Edition
+     * 
      * My github for this project: https://github.com/Soni-Hendar-Kip/SHKalkulator
      * 
      * link tutor:
      * original version from pak dosen rozi
      */
 public class NoxKalkulatorVersiDosenRozi extends javax.swing.JFrame {
-    String TandaHitung=""; //untuk mewakili simbol hitung +-/*
+    String TandaHitung=""; //untuk mewakili simbol operator hitung +-/*
     String LayarAwal; //untuk mewakili layar awal
     boolean FirstClick=false;
     double Angka_ke1 = 0; //untuk mewakili angka pertama yg akan di hitung pada kalkulator
@@ -34,13 +35,6 @@ public class NoxKalkulatorVersiDosenRozi extends javax.swing.JFrame {
             NoxLayar_.setText(k);
             FirstClick=false;
         }
-        /*System.out.println("SIGN : " +TandaHitung);
-        System.out.println("FIRST CLICK : " +FirstClick);
-        
-        if(TandaHitung.equals("plus") && FirstClick){
-            NoxLayar_.setText(k);
-            FirstClick=false;
-        }*/
         else{
             NoxLayar_.setText(LayarAwal+k);
         }
@@ -384,87 +378,46 @@ public class NoxKalkulatorVersiDosenRozi extends javax.swing.JFrame {
 
     private void NoxBt9_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NoxBt9_ActionPerformed
         // TODO add your handling code here:
-        /*if (NoxLayar_.getText().isEmpty()){
-            NoxLayar_.setText(NoxBt9_.getText());
-            Nilai1 = 9;
-        }
-        else {
-            NoxLayar_.setText(NoxLayar_.getText() + "" + NoxBt9_.getText());
-            Nilai2 = 9;
-        }*/
+
             AturTextLayar("9");
             HilangkanWarnaTombol(true);
             NoxBt9_.setBackground(Color.GREEN);
-            //SHAngka+="9";
-            //NoxTextLayar_.setText(SHAngka);
+
     }//GEN-LAST:event_NoxBt9_ActionPerformed
 
     private void NoxBt6_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NoxBt6_ActionPerformed
         // TODO add your handling code here:
-        /*if (NoxLayar_.getText().isEmpty()){
-            NoxLayar_.setText(NoxBt6_.getText());
-            Nilai1 = 6;
-        }
-        else {
-            NoxLayar_.setText(NoxLayar_.getText() + "" + NoxBt6_.getText());
-            Nilai2 = 6;
-        }*/
+
             AturTextLayar("6");
             HilangkanWarnaTombol(true);
             NoxBt6_.setBackground(Color.GREEN);
-            //SHAngka+="6";
-            //NoxTextLayar_.setText(SHAngka);
+
     }//GEN-LAST:event_NoxBt6_ActionPerformed
 
     private void NoxBt5_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NoxBt5_ActionPerformed
         // TODO add your handling code here:
-        /*if (NoxLayar_.getText().isEmpty()){
-            NoxLayar_.setText(NoxBt5_.getText());
-            Nilai1 = 5;
-        }
-        else {
-            NoxLayar_.setText(NoxLayar_.getText() + "" + NoxBt5_.getText());
-            Nilai2 = 5;
-        }*/
+
             AturTextLayar("5");
             HilangkanWarnaTombol(true);
             NoxBt5_.setBackground(Color.GREEN);
-            //SHAngka+="5";
-            //NoxTextLayar_.setText(SHAngka);
+
     }//GEN-LAST:event_NoxBt5_ActionPerformed
 
     private void NoxBt2_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NoxBt2_ActionPerformed
         // TODO add your handling code here:
-        /*if (NoxLayar_.getText().isEmpty()){
-            NoxLayar_.setText(NoxBt2_.getText());
-            Nilai1 = 2;
-        }
-        else {
-            NoxLayar_.setText(NoxLayar_.getText() + "" + NoxBt2_.getText());
-            Nilai2 = 2;
-        }*/
+
             AturTextLayar("2");
             HilangkanWarnaTombol(true);
             NoxBt2_.setBackground(Color.GREEN);
-            //SHAngka+="2";
-            //NoxTextLayar_.setText(SHAngka);
+
     }//GEN-LAST:event_NoxBt2_ActionPerformed
 
     private void NoxBt3_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NoxBt3_ActionPerformed
         // TODO add your handling code here:        
-        /*if (NoxLayar_.getText().isEmpty()){
-            NoxLayar_.setText(NoxBt3_.getText());
-            Nilai1 = 3;
-        }
-        else {
-            NoxLayar_.setText(NoxLayar_.getText() + "" + NoxBt3_.getText());
-            Nilai2 = 3;
-        }*/
+
             AturTextLayar("3");
             HilangkanWarnaTombol(true);
             NoxBt3_.setBackground(Color.GREEN);
-            //SHAngka+="3";
-            //NoxTextLayar_.setText(SHAngka);
     }//GEN-LAST:event_NoxBt3_ActionPerformed
 
     private void NoxBtClear_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NoxBtClear_ActionPerformed
@@ -477,10 +430,7 @@ public class NoxKalkulatorVersiDosenRozi extends javax.swing.JFrame {
 
     private void NoxBtTambah_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NoxBtTambah_ActionPerformed
         // TODO add your handling code here:
-        /*if (!(NoxLayar_.getText().isEmpty())){
-            OperatorMTK = "tambah";
-            NoxLayar_.setText(NoxLayar_.getText() + "+");
-        }*/
+
             TandaHitung = "+";
             FirstClick = true;
             Angka_ke1=Double.parseDouble(NoxLayar_.getText());
@@ -491,10 +441,7 @@ public class NoxKalkulatorVersiDosenRozi extends javax.swing.JFrame {
 
     private void NoxBtKurang_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NoxBtKurang_ActionPerformed
         // TODO add your handling code here:
-        /*if (!(NoxLayar_.getText().isEmpty())){
-            OperatorMTK = "kurang";
-            NoxLayar_.setText(NoxLayar_.getText() + "-");
-        }*/
+
         TandaHitung = "-";
         FirstClick = true;
         Angka_ke1 = Double.parseDouble(NoxLayar_.getText());
@@ -505,10 +452,7 @@ public class NoxKalkulatorVersiDosenRozi extends javax.swing.JFrame {
 
     private void NoxBtKali_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NoxBtKali_ActionPerformed
         // TODO add your handling code here:
-        /*if (!(NoxLayar_.getText().isEmpty())){
-            OperatorMTK = "perkalian";
-            NoxLayar_.setText(NoxLayar_.getText() + "*");
-        }*/
+
         TandaHitung = "*";
         FirstClick = true;
         Angka_ke1 = Double.parseDouble(NoxLayar_.getText());
@@ -519,10 +463,7 @@ public class NoxKalkulatorVersiDosenRozi extends javax.swing.JFrame {
 
     private void NoxBtBagi_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NoxBtBagi_ActionPerformed
         // TODO add your handling code here:
-        /*if (!(NoxLayar_.getText().isEmpty())){
-            OperatorMTK = "pembagian";
-            NoxLayar_.setText(NoxLayar_.getText() + "/");
-        }*/
+
         TandaHitung = "/";
         FirstClick = true;
         Angka_ke1 = Double.parseDouble(NoxLayar_.getText());
@@ -533,19 +474,12 @@ public class NoxKalkulatorVersiDosenRozi extends javax.swing.JFrame {
 
     private void NoxBtKoma_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NoxBtKoma_ActionPerformed
         // TODO add your handling code here:
-        /*SHasil = 0;
-        SHBil_2=Double.parseDouble(NoxLayar_.getText());
-        if (TandaHitung.equals("plus")){
-            SHasil=SHBil_1 + SHBil_2;
-        }
-        NoxLayar_.setText(SHasil+"");*/
-        
+
         AturTextLayar("."); //koma dalam inggris menjadi . (titik)
             
         HilangkanWarnaTombol(true);
         NoxBtKoma_.setBackground(Color.YELLOW);
-        
-        //if(NoxLayar_.getText())
+
     }//GEN-LAST:event_NoxBtKoma_ActionPerformed
 
     private void NoxBtPersen_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NoxBtPersen_ActionPerformed
@@ -583,88 +517,45 @@ public class NoxKalkulatorVersiDosenRozi extends javax.swing.JFrame {
 
     private void NoxBt7_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NoxBt7_ActionPerformed
         // TODO add your handling code here:
-        /*if (NoxLayar_.getText().isEmpty()){
-            NoxLayar_.setText(NoxBt7_.getText());
-            Nilai1 = 7;
-        }
-        else {
-            NoxLayar_.setText(NoxLayar_.getText() + "" + NoxBt7_.getText());
-            Nilai2 = 7;
-        }*/
+
             AturTextLayar("7");
             HilangkanWarnaTombol(true);
             NoxBt7_.setBackground(Color.GREEN);
-            //SHAngka+="7";
-            //NoxTextLayar_.setText(SHAngka);
+
     }//GEN-LAST:event_NoxBt7_ActionPerformed
 
     private void NoxBt8_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NoxBt8_ActionPerformed
         // TODO add your handling code here:
-        /*if (NoxLayar_.getText().isEmpty()){
-            NoxLayar_.setText(NoxBt8_.getText());
-            Nilai1 = 8;
-        }
-        else {
-            NoxLayar_.setText(NoxLayar_.getText() + "" + NoxBt8_.getText());
-            Nilai2 = 8;
-        }*/
+
             AturTextLayar("8");
             HilangkanWarnaTombol(true);
             NoxBt8_.setBackground(Color.GREEN);
-            //SHAngka+="8";
-            //NoxTextLayar_.setText(SHAngka);
+
     }//GEN-LAST:event_NoxBt8_ActionPerformed
 
     private void NoxBt4_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NoxBt4_ActionPerformed
         // TODO add your handling code here:
-        /*if (NoxLayar_.getText().isEmpty()){
-            NoxLayar_.setText(NoxBt4_.getText());
-            Nilai1 = 4;
-        }
-        else {
-            NoxLayar_.setText(NoxLayar_.getText() + "" + NoxBt4_.getText());
-            Nilai2 = 4;
-        }*/
+
             AturTextLayar("4");
-            
             HilangkanWarnaTombol(true);
             NoxBt4_.setBackground(Color.GREEN);
-            //SHAngka+="4";
-            //NoxTextLayar_.setText(SHAngka);
+
     }//GEN-LAST:event_NoxBt4_ActionPerformed
 
     private void NoxBt1_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NoxBt1_ActionPerformed
         // TODO add your handling code here:
-        /*if (NoxLayar_.getText().isEmpty()){
-            NoxLayar_.setText(NoxBt1_.getText());
-            Nilai1 = 1;
-        }
-        else {
-            NoxLayar_.setText(NoxLayar_.getText() + "" + NoxBt1_.getText());
-            Nilai2 = 1;
-        }*/
+
             AturTextLayar("1");
             HilangkanWarnaTombol(true);
             NoxBt1_.setBackground(Color.GREEN);
-            //AturWarnaTombolAngka(true);
-            //NoxTextLayar_.setText(SHAngka);
+
     }//GEN-LAST:event_NoxBt1_ActionPerformed
 
     private void NoxBt0_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NoxBt0_ActionPerformed
         // TODO add your handling code here:
-        /*if (NoxLayar_.getText().isEmpty()){
-            NoxLayar_.setText(NoxBt0_.getText());
-            Nilai1 = 0;
-        }
-        else {
-            NoxLayar_.setText(NoxLayar_.getText() + "" + NoxBt0_.getText());
-            Nilai2 = 0;
-        }*/
             AturTextLayar("0");
             HilangkanWarnaTombol(true);
             NoxBt0_.setBackground(Color.GREEN);
-            //SHAngka+="0";
-            //NoxTextLayar_.setText(SHAngka);
     }//GEN-LAST:event_NoxBt0_ActionPerformed
 
     /**
