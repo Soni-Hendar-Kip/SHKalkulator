@@ -9,5 +9,5 @@
 - Hanya sedikit merubah tampilan saja
 - Dan memberi warna pada tombol
 
-- My github for this project: 
-  https://github.com/Soni-Hendar-Kip/SHKalkulator
+ My github for this project: 
+ https://github.com/Soni-Hendar-Kip/SHKalkulator
