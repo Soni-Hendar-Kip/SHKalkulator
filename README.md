@@ -1,6 +1,7 @@
 # SoniKuliahPTI - SHKalkulator
 # 
-# Gunakan Belsoft JDK 19 atau JAVA Runtime Versi terbaru
+# Tolong Gunakan Belsoft JDK 19 atau JAVA Runtime Versi terbaru
+(mungkin tidak jalan di JDK JAVA Runtime versi lama)
 
  Membuat Kalkulator dengan Java - Matkul Pemrograman Lanjut PTI 4B
 
