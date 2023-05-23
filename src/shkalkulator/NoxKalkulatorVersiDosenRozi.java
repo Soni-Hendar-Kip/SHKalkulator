@@ -15,6 +15,7 @@ import javax.swing.*;
      * - original version from pak dosen rozi,
      * and
      * - https://www.tutorialsfield.com/simple-calculator-program-in-java-using-swing/
+     * - https://www.duniaprogramming.com/2017/02/cara-membuat-program-kalkulator-keren.html
      */
 public class NoxKalkulatorVersiDosenRozi extends javax.swing.JFrame {
     String TandaHitung=""; //untuk mewakili simbol operator hitung +-/*
@@ -658,7 +659,10 @@ public class NoxKalkulatorVersiDosenRozi extends javax.swing.JFrame {
 
     private void NoxBtPersen_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NoxBtPersen_ActionPerformed
         // TODO add your handling code here:
-        JOptionPane.showMessageDialog(null, "sorry belum berfungsi");
+        
+        Angka_ke2 = Double.parseDouble(NoxLayar_.getText());
+        Hasil_Hitung = Angka_ke1*Angka_ke2/100;
+        NoxLayar_.setText(Double.toString(Hasil_Hitung));
     }//GEN-LAST:event_NoxBtPersen_ActionPerformed
 
     private void NoxBtSamaDengan_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NoxBtSamaDengan_ActionPerformed
@@ -693,7 +697,7 @@ public class NoxKalkulatorVersiDosenRozi extends javax.swing.JFrame {
                 + "21183207051\n"
                 + "PTI 4B\n\n"
                 + "Bug:\n"
-                + "- Tombol persen (%) belum berfungsi, googling belum ketemu tutor codingnya", "Tentang Kalkulator ini", HEIGHT);
+                + "- [SUDAH FIX] Tombol persen (%) belum berfungsi, googling belum ketemu tutor codingnya", "Tentang Kalkulator ini", HEIGHT);
     }//GEN-LAST:event_NoxBtAbout_ActionPerformed
 
     private void NoxBt7_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NoxBt7_ActionPerformed

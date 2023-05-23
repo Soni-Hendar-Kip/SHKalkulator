@@ -10,7 +10,10 @@
 - https://www.tutorialsfield.com/simple-calculator-program-in-java-using-swing/
 
  Bug:
-- Tombol persen (%) belum berfungsi, googling belum ketemu tutor codingnya
+- [SUDAH FIX] Tombol persen (%) belum berfungsi, googling belum ketemu tutor codingnya
 
  My github for this project: 
  https://github.com/Soni-Hendar-Kip/SHKalkulator
+ 
+ Blog:
+ https://sonihendar.blogspot.com/2023/05/fix-kalkulator-anti-mumet.html
