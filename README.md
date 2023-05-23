@@ -6,8 +6,10 @@
  Membuat Kalkulator dengan Java - Matkul Pemrograman Lanjut PTI 4B
 - Original coding dari pak dosen Rozi
 - Hanya sedikit merubah tampilan saja
-- Juga dari:
+ 
+ Juga tutor dari:
 - https://www.tutorialsfield.com/simple-calculator-program-in-java-using-swing/
+- https://www.duniaprogramming.com/2017/02/cara-membuat-program-kalkulator-keren.html
 
  Bug:
 - [SUDAH FIX] Tombol persen (%) belum berfungsi, googling belum ketemu tutor codingnya
