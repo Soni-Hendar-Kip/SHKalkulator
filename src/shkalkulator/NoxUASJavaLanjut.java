@@ -1,22 +1,27 @@
 package shkalkulator;
 
 import java.awt.Color;
+import java.text.DecimalFormat;
 import javax.swing.*;
 
 /**
  * UAS Matkul Java Lanjut PTI 4B
  *
- * @author Soni Hendarkanto PTI 4B With Apache NetBeans IDE 16, Belsoft JAVA JDK
- * 19 on Linux Mint 21.1 "VERA" Cinnamon Desktop Edition
+ * @author Soni Hendarkanto PTI 4B
+ *
+ * With Apache NetBeans IDE 16, Belsoft JAVA JDK 19 on Linux Mint 21.1 "VERA"
+ * Cinnamon Desktop Edition
  *
  * My github for this project: https://github.com/Soni-Hendar-Kip/SHKalkulator
  *
- * link tutor: - original version from pak dosen rozi, and -
+ * link tutor: original version from pak dosen rozi,
+ *
+ * and
  * https://www.tutorialsfield.com/simple-calculator-program-in-java-using-swing/
- * -
  * https://www.duniaprogramming.com/2017/02/cara-membuat-program-kalkulator-keren.html
- * and -
  * http://ngoding-java.blogspot.com/2016/02/membuat-aplikasi-konverter-suhu-dengan.html
+ * https://arbysan.wordpress.com/2014/10/19/menampilkan-2-angka-belakang-koma-dengan-java/
+ *
  */
 public class NoxUASJavaLanjut extends javax.swing.JFrame {
 
@@ -40,6 +45,7 @@ public class NoxUASJavaLanjut extends javax.swing.JFrame {
     public NoxUASJavaLanjut() {
         initComponents();
         NoxRadioBtOn_.setEnabled(false);
+        NoxRadioCelcius_.setEnabled(false);
     }
 
     public void AturTextLayar(String k) {
@@ -795,7 +801,7 @@ public class NoxUASJavaLanjut extends javax.swing.JFrame {
     }//GEN-LAST:event_NoxBtBagi_ActionPerformed
 
     private void NoxBtKoma_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NoxBtKoma_ActionPerformed
-        // TODO add your handling code here:
+        // Fungsi agar kalo dilayar sudah ada koma, tidak bisa muncul koma lagi
         if (NoxLayar_.getText().contains(".")) {
             return;
         } else {
@@ -828,9 +834,13 @@ public class NoxUASJavaLanjut extends javax.swing.JFrame {
         } else if (TandaHitung == "/") {
             Hasil_Hitung = Angka_ke1 / Angka_ke2;
         }
+        
+        // agar menjadi dua angka saja dibelakang desimal
+        DecimalFormat ddd = new DecimalFormat("#.###"); //atur jumlah angka desimal di sini
+        String Rungkad = ddd.format(Hasil_Hitung);
 
-        String SHasil = Double.toString(Hasil_Hitung);
-        NoxLayar_.setText(SHasil);
+        // menampilkan hasil yang telah di sunat desimal nya
+        NoxLayar_.setText(Rungkad);
 
         HilangkanWarnaTombol(true);
         NoxBtSamaDengan_.setBackground(Color.RED);
@@ -839,7 +849,7 @@ public class NoxUASJavaLanjut extends javax.swing.JFrame {
     private void NoxBtAbout_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NoxBtAbout_ActionPerformed
         // TODO add your handling code here:
         new abot().setVisible(true); //memanggil form abot (About)
-        
+
         /*JOptionPane.showMessageDialog(rootPane, "UAS Matkul Pemrograman lanjut\n"
                 + "Dosen: Pak Fahrur Rozi\n\n"
                 + "Kalkulator Sederhana + Converter Suhu Sederhana Juga   \n\n"
@@ -924,7 +934,12 @@ public class NoxUASJavaLanjut extends javax.swing.JFrame {
 
         Angka_ke1 = Double.parseDouble(NoxLayar_.getText());
         Double AkarKuadrat = Math.sqrt(Angka_ke1);
-        NoxLayar_.setText(Double.toString(AkarKuadrat));
+        
+        // agar menjadi dua angka saja dibelakang desimal
+        DecimalFormat ddd = new DecimalFormat("#.###"); //atur jumlah angka desimal di sini
+        String Rungkad = ddd.format(AkarKuadrat);
+        //NoxLayar_.setText(Double.toString(AkarKuadrat));
+        NoxLayar_.setText(Rungkad);
     }//GEN-LAST:event_NoxBtAkarKuadrat_ActionPerformed
 
     private void NoxBtAkarKubik_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NoxBtAkarKubik_ActionPerformed
@@ -932,7 +947,12 @@ public class NoxUASJavaLanjut extends javax.swing.JFrame {
 
         Angka_ke1 = Double.parseDouble(NoxLayar_.getText());
         Double AkarKubik = Math.cbrt(Angka_ke1);
-        NoxLayar_.setText(Double.toString(AkarKubik));
+        
+        // agar menjadi dua angka saja dibelakang desimal
+        DecimalFormat ddd = new DecimalFormat("#.###"); //atur jumlah angka desimal di sini
+        String Rungkad = ddd.format(AkarKubik);
+        //NoxLayar_.setText(Double.toString(AkarKubik));
+        NoxLayar_.setText(Rungkad);
     }//GEN-LAST:event_NoxBtAkarKubik_ActionPerformed
 
     private void NoxBtPangkatKuadrat_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NoxBtPangkatKuadrat_ActionPerformed
@@ -972,12 +992,17 @@ public class NoxUASJavaLanjut extends javax.swing.JFrame {
         } else {
             NoxSuhuuuu = Double.valueOf(NoxLayar_.getText());
             NoxFahrell = NoxSuhuuuu * 1.8 + 32;
-            NoxHasilSuhu = Double.toString(NoxFahrell);
-            NoxLayar_.setText(NoxHasilSuhu + " 'F");
-
+            
+            // agar menjadi dua angka saja dibelakang desimal
+            DecimalFormat ddd = new DecimalFormat("#.###"); //atur jumlah angka desimal di sini
+            String Rungkad = ddd.format(NoxFahrell);
+            //NoxHasilSuhu = Double.toString(NoxFahrell);
+            NoxLayar_.setText(Rungkad + " 'F");
+            
             //NoxRadioFahrenheit_.setEnabled(false);
             NoxRadioKelvin_.setEnabled(false);
             NoxRadioReamur_.setEnabled(false);
+            NoxRadioCelcius_.setEnabled(true);
             //NoxRadioCelcius_.setSelected(true);
         }
     }//GEN-LAST:event_NoxRadioFahrenheit_ActionPerformed
@@ -993,9 +1018,14 @@ public class NoxUASJavaLanjut extends javax.swing.JFrame {
         } else {
             NoxSuhuuuu = Double.valueOf(NoxLayar_.getText());
             NoxKelvinSanjaya = NoxSuhuuuu + 273.15;
-            NoxHasilSuhu = Double.toString(NoxKelvinSanjaya);
-            NoxLayar_.setText(NoxHasilSuhu + " 'K");
-
+            
+            // agar menjadi dua angka saja dibelakang desimal
+            DecimalFormat ddd = new DecimalFormat("#.###"); //atur jumlah angka desimal di sini
+            String Rungkad = ddd.format(NoxKelvinSanjaya);
+            //NoxHasilSuhu = Double.toString(NoxKelvinSanjaya);
+            NoxLayar_.setText(Rungkad + " 'K");
+            
+            NoxRadioCelcius_.setEnabled(true);
             NoxRadioFahrenheit_.setEnabled(false);
             //NoxRadioKelvin_.setEnabled(false);
             NoxRadioReamur_.setEnabled(false);
@@ -1014,11 +1044,17 @@ public class NoxUASJavaLanjut extends javax.swing.JFrame {
         } else {
             NoxSuhuuuu = Double.valueOf(NoxLayar_.getText());
             NoxRemunerasi = NoxSuhuuuu * 0.8;
-            NoxHasilSuhu = Double.toString(NoxRemunerasi);
-            NoxLayar_.setText(NoxHasilSuhu + " 'R");
+            //NoxHasilSuhu = Double.toString(NoxRemunerasi);
+            
+            // agar menjadi dua angka saja dibelakang desimal
+            DecimalFormat ddd = new DecimalFormat("#.###"); //atur jumlah angka desimal di sini
+            String Rungkad = ddd.format(NoxRemunerasi);
+            NoxLayar_.setText(Rungkad + " 'R");
+            //NoxLayar_.setText(NoxHasilSuhu + " 'R");
 
             NoxRadioFahrenheit_.setEnabled(false);
             NoxRadioKelvin_.setEnabled(false);
+            NoxRadioCelcius_.setEnabled(true);
             //NoxRadioReamur_.setEnabled(false);
             //NoxRadioCelcius_.setSelected(true);
         }
