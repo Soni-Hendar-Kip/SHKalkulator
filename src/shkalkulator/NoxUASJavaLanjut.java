@@ -1,54 +1,65 @@
-
 package shkalkulator;
 
 import java.awt.Color;
 import javax.swing.*;
 
 /**
-     * @author Soni Hendarkanto PTI 4B
-     * With Apache NetBeans IDE 16, Belsoft JAVA JDK 19
-     * on Linux Mint 21.1 "VERA" Cinnamon Desktop Edition
-     * 
-     * My github for this project: https://github.com/Soni-Hendar-Kip/SHKalkulator
-     * 
-     * link tutor:
-     * - original version from pak dosen rozi,
-     * and
-     * - https://www.tutorialsfield.com/simple-calculator-program-in-java-using-swing/
-     * - https://www.duniaprogramming.com/2017/02/cara-membuat-program-kalkulator-keren.html
-     */
-public class NoxKalkulatorVersiDosenRozi extends javax.swing.JFrame {
-    String TandaHitung=""; //untuk mewakili simbol operator hitung +-/*
+ * UAS Matkul Java Lanjut PTI 4B
+ *
+ * @author Soni Hendarkanto PTI 4B With Apache NetBeans IDE 16, Belsoft JAVA JDK
+ * 19 on Linux Mint 21.1 "VERA" Cinnamon Desktop Edition
+ *
+ * My github for this project: https://github.com/Soni-Hendar-Kip/SHKalkulator
+ *
+ * link tutor: - original version from pak dosen rozi, and -
+ * https://www.tutorialsfield.com/simple-calculator-program-in-java-using-swing/
+ * -
+ * https://www.duniaprogramming.com/2017/02/cara-membuat-program-kalkulator-keren.html
+ * and -
+ * http://ngoding-java.blogspot.com/2016/02/membuat-aplikasi-konverter-suhu-dengan.html
+ */
+public class NoxUASJavaLanjut extends javax.swing.JFrame {
+
+    String TandaHitung = ""; //untuk mewakili simbol operator hitung +-/*
     String LayarAwal; //untuk mewakili layar awal
-    boolean FirstClick=false;
+    boolean FirstClick = false;
+
     double Angka_ke1 = 0; //untuk mewakili angka pertama yg akan di hitung pada kalkulator
     double Angka_ke2 = 0; //untuk mewakili angka kedua
     double Hasil_Hitung; //untuk mewakili hasil perhitungan
 
-    public NoxKalkulatorVersiDosenRozi() {
+    //UAS
+    public Double NoxSuhuuuu; //variable hitung suhu, dianggap satuanya adalah celcius
+    public Double NoxCelc; //celcius bro
+    public Double NoxFahrell; //tau ndiri lah
+    public Double NoxKelvinSanjaya; //mosok dadak di tulis
+    public Double NoxRemunerasi; //reamur bro
+
+    public String NoxHasilSuhu;
+
+    public NoxUASJavaLanjut() {
         initComponents();
         NoxRadioBtOn_.setEnabled(false);
     }
-    
-    public void AturTextLayar(String k){
+
+    public void AturTextLayar(String k) {
         LayarAwal = NoxLayar_.getText();
-        if(LayarAwal.equals("0")) {
-            LayarAwal=LayarAwal.replace("0","");
+        if (LayarAwal.equals("0")) {
+            LayarAwal = LayarAwal.replace("0", "");
         }
-        if(!TandaHitung.equals("") && FirstClick) {
+        if (!TandaHitung.equals("") && FirstClick) {
             NoxLayar_.setText(k);
-            FirstClick=false;
-        }
-        else{
-            NoxLayar_.setText(LayarAwal+k);
+            FirstClick = false;
+        } else {
+            NoxLayar_.setText(LayarAwal + k);
         }
     }
-    
-    public void AturWarnaTombolAngka(boolean yes_or_no){
+
+    public void AturWarnaTombolAngka(boolean yes_or_no) {
         setBackground(Color.yellow);
     }
-    
-    public void HilangkanWarnaTombol(boolean yes_or_no){
+
+    public void HilangkanWarnaTombol(boolean yes_or_no) {
         NoxBt0_.setBackground(Color.LIGHT_GRAY);
         NoxBt1_.setBackground(Color.LIGHT_GRAY);
         NoxBt2_.setBackground(Color.LIGHT_GRAY);
@@ -69,8 +80,8 @@ public class NoxKalkulatorVersiDosenRozi extends javax.swing.JFrame {
         NoxBtTambah_.setBackground(Color.magenta);
         NoxBtDelete_.setBackground(Color.blue);
     }
-    
-    public void Modiarrr(){
+
+    public void Modiarrr() {
         NoxBt1_.setEnabled(false);
         NoxBt2_.setEnabled(false);
         NoxBt3_.setEnabled(false);
@@ -97,9 +108,17 @@ public class NoxKalkulatorVersiDosenRozi extends javax.swing.JFrame {
         NoxLayar_.setEnabled(false);
         NoxRadioBtOff_.setEnabled(false);
         NoxRadioBtOn_.setEnabled(true);
+        NoxRadioCelcius_.setEnabled(false);
+        NoxRadioFahrenheit_.setEnabled(false);
+        NoxRadioKelvin_.setEnabled(false);
+        NoxRadioReamur_.setEnabled(false);
+        jPanel2.setBackground(Color.LIGHT_GRAY);
+        jLabel2.setForeground(Color.GRAY);
+        jLabel3.setForeground(Color.GRAY);
+        jLabel1.setForeground(Color.red);
     }
-    
-    public void Muruppp(){
+
+    public void Muruppp() {
         NoxBt1_.setEnabled(true);
         NoxBt2_.setEnabled(true);
         NoxBt3_.setEnabled(true);
@@ -126,6 +145,14 @@ public class NoxKalkulatorVersiDosenRozi extends javax.swing.JFrame {
         NoxLayar_.setEnabled(true);
         NoxRadioBtOff_.setEnabled(true);
         NoxRadioBtOn_.setEnabled(false);
+        NoxRadioCelcius_.setEnabled(true);
+        NoxRadioFahrenheit_.setEnabled(true);
+        NoxRadioKelvin_.setEnabled(true);
+        NoxRadioReamur_.setEnabled(true);
+        jPanel2.setBackground(Color.getHSBColor(255, 255, 255));
+        jLabel2.setForeground(Color.black);
+        jLabel3.setForeground(Color.black);
+        jLabel1.setForeground(Color.black);
     }
 
     /**
@@ -138,6 +165,7 @@ public class NoxKalkulatorVersiDosenRozi extends javax.swing.JFrame {
     private void initComponents() {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
+        buttonGroupSuhu_ = new javax.swing.ButtonGroup();
         NoxLayar_ = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         NoxBt7_ = new javax.swing.JButton();
@@ -166,7 +194,14 @@ public class NoxKalkulatorVersiDosenRozi extends javax.swing.JFrame {
         NoxBtAkarKuadrat_ = new javax.swing.JButton();
         NoxBtAkarKubik_ = new javax.swing.JButton();
         NoxBtPangkatKuadrat_ = new javax.swing.JButton();
-        jInternalFrame1 = new javax.swing.JInternalFrame();
+        jPanel2 = new javax.swing.JPanel();
+        NoxRadioCelcius_ = new javax.swing.JRadioButton();
+        NoxRadioFahrenheit_ = new javax.swing.JRadioButton();
+        NoxRadioKelvin_ = new javax.swing.JRadioButton();
+        NoxRadioReamur_ = new javax.swing.JRadioButton();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("SH PTI 4B");
@@ -319,7 +354,7 @@ public class NoxKalkulatorVersiDosenRozi extends javax.swing.JFrame {
         );
 
         jLabel1.setBackground(new java.awt.Color(0, 153, 102));
-        jLabel1.setFont(new java.awt.Font("Liberation Sans", 3, 13)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Liberation Sans", 3, 17)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Kalkulator Anti Mumet");
 
@@ -400,7 +435,7 @@ public class NoxKalkulatorVersiDosenRozi extends javax.swing.JFrame {
         });
 
         NoxBtAbout_.setFont(new java.awt.Font("Liberation Sans", 1, 14)); // NOI18N
-        NoxBtAbout_.setText("?");
+        NoxBtAbout_.setText("about");
         NoxBtAbout_.setToolTipText("About this program....");
         NoxBtAbout_.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -420,6 +455,7 @@ public class NoxKalkulatorVersiDosenRozi extends javax.swing.JFrame {
         });
 
         buttonGroup1.add(NoxRadioBtOn_);
+        NoxRadioBtOn_.setFont(new java.awt.Font("Liberation Sans", 1, 13)); // NOI18N
         NoxRadioBtOn_.setText("On");
         NoxRadioBtOn_.setToolTipText("nyalakan..");
         NoxRadioBtOn_.addActionListener(new java.awt.event.ActionListener() {
@@ -429,6 +465,7 @@ public class NoxKalkulatorVersiDosenRozi extends javax.swing.JFrame {
         });
 
         buttonGroup1.add(NoxRadioBtOff_);
+        NoxRadioBtOff_.setFont(new java.awt.Font("Liberation Sans", 1, 13)); // NOI18N
         NoxRadioBtOff_.setText("Off");
         NoxRadioBtOff_.setToolTipText("matikan kalkulator");
         NoxRadioBtOff_.addActionListener(new java.awt.event.ActionListener() {
@@ -464,17 +501,97 @@ public class NoxKalkulatorVersiDosenRozi extends javax.swing.JFrame {
             }
         });
 
-        jInternalFrame1.setVisible(true);
+        jPanel2.setBackground(new java.awt.Color(255, 204, 51));
 
-        javax.swing.GroupLayout jInternalFrame1Layout = new javax.swing.GroupLayout(jInternalFrame1.getContentPane());
-        jInternalFrame1.getContentPane().setLayout(jInternalFrame1Layout);
-        jInternalFrame1Layout.setHorizontalGroup(
-            jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+        buttonGroupSuhu_.add(NoxRadioCelcius_);
+        NoxRadioCelcius_.setFont(new java.awt.Font("Liberation Sans", 3, 13)); // NOI18N
+        NoxRadioCelcius_.setSelected(true);
+        NoxRadioCelcius_.setText("Celcius");
+        NoxRadioCelcius_.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NoxRadioCelcius_ActionPerformed(evt);
+            }
+        });
+
+        buttonGroupSuhu_.add(NoxRadioFahrenheit_);
+        NoxRadioFahrenheit_.setFont(new java.awt.Font("Liberation Sans", 3, 13)); // NOI18N
+        NoxRadioFahrenheit_.setText("Fahrenheit");
+        NoxRadioFahrenheit_.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NoxRadioFahrenheit_ActionPerformed(evt);
+            }
+        });
+
+        buttonGroupSuhu_.add(NoxRadioKelvin_);
+        NoxRadioKelvin_.setFont(new java.awt.Font("Liberation Sans", 3, 13)); // NOI18N
+        NoxRadioKelvin_.setText("Kelvin");
+        NoxRadioKelvin_.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NoxRadioKelvin_ActionPerformed(evt);
+            }
+        });
+
+        buttonGroupSuhu_.add(NoxRadioReamur_);
+        NoxRadioReamur_.setFont(new java.awt.Font("Liberation Sans", 3, 13)); // NOI18N
+        NoxRadioReamur_.setText("Reamur");
+        NoxRadioReamur_.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NoxRadioReamur_ActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setFont(new java.awt.Font("Liberation Sans", 1, 13)); // NOI18N
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("Konverter");
+
+        jLabel3.setFont(new java.awt.Font("Liberation Sans", 1, 13)); // NOI18N
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText("Suhu");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(NoxRadioFahrenheit_)
+                            .addComponent(NoxRadioKelvin_)
+                            .addComponent(NoxRadioReamur_)
+                            .addComponent(NoxRadioCelcius_)))
+                    .addComponent(jSeparator1))
+                .addContainerGap())
+            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel2Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addContainerGap()))
         );
-        jInternalFrame1Layout.setVerticalGroup(
-            jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(NoxRadioCelcius_)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(NoxRadioFahrenheit_)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(NoxRadioKelvin_)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(NoxRadioReamur_)
+                .addContainerGap())
+            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel2Layout.createSequentialGroup()
+                    .addGap(16, 16, 16)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(132, Short.MAX_VALUE)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -484,43 +601,42 @@ public class NoxKalkulatorVersiDosenRozi extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(NoxLayar_)
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(NoxLayar_)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(NoxRadioBtOn_)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(NoxRadioBtOff_)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(NoxBtAkarKuadrat_, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(NoxBtPangkatKuadrat_, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(33, 33, 33)
-                                .addComponent(jInternalFrame1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(NoxBtTambah_, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
-                                .addComponent(NoxBtKurang_, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(NoxBtKali_, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(NoxRadioBtOn_)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(NoxRadioBtOff_)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(NoxBtBagi_, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(NoxBtAkarKuadrat_, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(NoxBtKoma_, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 76, Short.MAX_VALUE)
+                                .addComponent(NoxBtDelete_, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(NoxBtTambah_, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(NoxBtKali_, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(NoxBtPangkatKuadrat_, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(NoxBtKurang_, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(NoxBtBagi_, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(NoxBtSamaDengan_, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 76, Short.MAX_VALUE)
+                                        .addComponent(NoxBtPersen_, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(NoxBtAkarKubik_, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(NoxBtKoma_, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 76, Short.MAX_VALUE)
-                                    .addComponent(NoxBtDelete_, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(NoxBtSamaDengan_, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(NoxBtPersen_, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 76, Short.MAX_VALUE)
-                                    .addComponent(NoxBtAbout_, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
+                                .addComponent(NoxBtAkarKubik_, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(12, 12, 12)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(NoxBtAbout_, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(0, 6, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -530,38 +646,47 @@ public class NoxKalkulatorVersiDosenRozi extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(NoxLayar_, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(NoxBtTambah_, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(NoxBtKurang_, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(NoxBtKali_, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(NoxBtBagi_, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(NoxBtKoma_, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(NoxBtPersen_, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(12, 12, 12)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(NoxBtSamaDengan_, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(NoxBtDelete_, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jInternalFrame1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(NoxRadioBtOn_)
-                        .addComponent(NoxRadioBtOff_)
-                        .addComponent(NoxBtAkarKuadrat_)
-                        .addComponent(NoxBtPangkatKuadrat_)
-                        .addComponent(NoxBtAkarKubik_))
-                    .addComponent(NoxBtAbout_))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(68, 68, 68)
+                        .addComponent(NoxBtBagi_, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(NoxBtPersen_, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(12, 12, 12)
+                        .addComponent(NoxBtSamaDengan_, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(1, 1, 1)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(NoxBtAkarKuadrat_)
+                                            .addComponent(NoxBtPangkatKuadrat_)
+                                            .addComponent(NoxBtAkarKubik_)))
+                                    .addComponent(NoxBtAbout_))
+                                .addGap(1, 1, 1))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(NoxBtTambah_, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(NoxBtKurang_, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                            .addComponent(NoxBtKali_, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                            .addComponent(NoxBtKoma_, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGap(13, 13, 13)
+                                            .addComponent(NoxBtDelete_, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(NoxRadioBtOn_)
+                                    .addComponent(NoxRadioBtOff_))))))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         pack();
@@ -571,64 +696,69 @@ public class NoxKalkulatorVersiDosenRozi extends javax.swing.JFrame {
     private void NoxBt9_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NoxBt9_ActionPerformed
         // TODO add your handling code here:
 
-            AturTextLayar("9");
-            HilangkanWarnaTombol(true);
-            NoxBt9_.setBackground(Color.GREEN);
+        AturTextLayar("9");
+        HilangkanWarnaTombol(true);
+        NoxBt9_.setBackground(Color.GREEN);
 
     }//GEN-LAST:event_NoxBt9_ActionPerformed
 
     private void NoxBt6_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NoxBt6_ActionPerformed
         // TODO add your handling code here:
 
-            AturTextLayar("6");
-            HilangkanWarnaTombol(true);
-            NoxBt6_.setBackground(Color.GREEN);
+        AturTextLayar("6");
+        HilangkanWarnaTombol(true);
+        NoxBt6_.setBackground(Color.GREEN);
 
     }//GEN-LAST:event_NoxBt6_ActionPerformed
 
     private void NoxBt5_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NoxBt5_ActionPerformed
         // TODO add your handling code here:
 
-            AturTextLayar("5");
-            HilangkanWarnaTombol(true);
-            NoxBt5_.setBackground(Color.GREEN);
+        AturTextLayar("5");
+        HilangkanWarnaTombol(true);
+        NoxBt5_.setBackground(Color.GREEN);
 
     }//GEN-LAST:event_NoxBt5_ActionPerformed
 
     private void NoxBt2_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NoxBt2_ActionPerformed
         // TODO add your handling code here:
 
-            AturTextLayar("2");
-            HilangkanWarnaTombol(true);
-            NoxBt2_.setBackground(Color.GREEN);
+        AturTextLayar("2");
+        HilangkanWarnaTombol(true);
+        NoxBt2_.setBackground(Color.GREEN);
 
     }//GEN-LAST:event_NoxBt2_ActionPerformed
 
     private void NoxBt3_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NoxBt3_ActionPerformed
         // TODO add your handling code here:        
 
-            AturTextLayar("3");
-            HilangkanWarnaTombol(true);
-            NoxBt3_.setBackground(Color.GREEN);
+        AturTextLayar("3");
+        HilangkanWarnaTombol(true);
+        NoxBt3_.setBackground(Color.GREEN);
     }//GEN-LAST:event_NoxBt3_ActionPerformed
 
     private void NoxBtClear_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NoxBtClear_ActionPerformed
         // TODO add your handling code here:
-         NoxLayar_.setText("");
-            
-         HilangkanWarnaTombol(true);
-         NoxBtClear_.setBackground(Color.blue);
+        NoxLayar_.setText("");
+
+        HilangkanWarnaTombol(true);
+        NoxBtClear_.setBackground(Color.blue);
+        NoxRadioCelcius_.setEnabled(true);
+        NoxRadioCelcius_.setSelected(true);
+        NoxRadioFahrenheit_.setEnabled(true);
+        NoxRadioKelvin_.setEnabled(true);
+        NoxRadioReamur_.setEnabled(true);
     }//GEN-LAST:event_NoxBtClear_ActionPerformed
 
     private void NoxBtTambah_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NoxBtTambah_ActionPerformed
         // TODO add your handling code here:
 
-            TandaHitung = "+";
-            FirstClick = true;
-            Angka_ke1=Double.parseDouble(NoxLayar_.getText());
-            
-            HilangkanWarnaTombol(true);
-            NoxBtTambah_.setBackground(Color.YELLOW);
+        TandaHitung = "+";
+        FirstClick = true;
+        Angka_ke1 = Double.parseDouble(NoxLayar_.getText());
+
+        HilangkanWarnaTombol(true);
+        NoxBtTambah_.setBackground(Color.YELLOW);
     }//GEN-LAST:event_NoxBtTambah_ActionPerformed
 
     private void NoxBtKurang_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NoxBtKurang_ActionPerformed
@@ -637,9 +767,9 @@ public class NoxKalkulatorVersiDosenRozi extends javax.swing.JFrame {
         TandaHitung = "-";
         FirstClick = true;
         Angka_ke1 = Double.parseDouble(NoxLayar_.getText());
-            
-            HilangkanWarnaTombol(true);
-            NoxBtKurang_.setBackground(Color.YELLOW);
+
+        HilangkanWarnaTombol(true);
+        NoxBtKurang_.setBackground(Color.YELLOW);
     }//GEN-LAST:event_NoxBtKurang_ActionPerformed
 
     private void NoxBtKali_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NoxBtKali_ActionPerformed
@@ -648,9 +778,9 @@ public class NoxKalkulatorVersiDosenRozi extends javax.swing.JFrame {
         TandaHitung = "*";
         FirstClick = true;
         Angka_ke1 = Double.parseDouble(NoxLayar_.getText());
-            
-            HilangkanWarnaTombol(true);
-            NoxBtKali_.setBackground(Color.YELLOW);
+
+        HilangkanWarnaTombol(true);
+        NoxBtKali_.setBackground(Color.YELLOW);
     }//GEN-LAST:event_NoxBtKali_ActionPerformed
 
     private void NoxBtBagi_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NoxBtBagi_ActionPerformed
@@ -659,20 +789,19 @@ public class NoxKalkulatorVersiDosenRozi extends javax.swing.JFrame {
         TandaHitung = "/";
         FirstClick = true;
         Angka_ke1 = Double.parseDouble(NoxLayar_.getText());
-            
-            HilangkanWarnaTombol(true);
-            NoxBtBagi_.setBackground(Color.YELLOW);
+
+        HilangkanWarnaTombol(true);
+        NoxBtBagi_.setBackground(Color.YELLOW);
     }//GEN-LAST:event_NoxBtBagi_ActionPerformed
 
     private void NoxBtKoma_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NoxBtKoma_ActionPerformed
         // TODO add your handling code here:
-        if(NoxLayar_.getText().contains(".")){
+        if (NoxLayar_.getText().contains(".")) {
             return;
-        }
-        else{
+        } else {
             AturTextLayar("."); //koma dalam inggris menjadi . (titik)
-        }      
-            
+        }
+
         HilangkanWarnaTombol(true);
         NoxBtKoma_.setBackground(Color.YELLOW);
 
@@ -680,9 +809,9 @@ public class NoxKalkulatorVersiDosenRozi extends javax.swing.JFrame {
 
     private void NoxBtPersen_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NoxBtPersen_ActionPerformed
         // TODO add your handling code here:
-        
+
         Angka_ke2 = Double.parseDouble(NoxLayar_.getText());
-        Hasil_Hitung = Angka_ke1*Angka_ke2/100;
+        Hasil_Hitung = Angka_ke1 * Angka_ke2 / 100;
         NoxLayar_.setText(Double.toString(Hasil_Hitung));
     }//GEN-LAST:event_NoxBtPersen_ActionPerformed
 
@@ -690,91 +819,95 @@ public class NoxKalkulatorVersiDosenRozi extends javax.swing.JFrame {
         // TODO add your handling code here:
         Hasil_Hitung = 0;
         Angka_ke2 = Double.parseDouble(NoxLayar_.getText());
-        if (TandaHitung == "+"){
-            Hasil_Hitung = Angka_ke1 + Angka_ke2 ;
+        if (TandaHitung == "+") {
+            Hasil_Hitung = Angka_ke1 + Angka_ke2;
+        } else if (TandaHitung == "-") {
+            Hasil_Hitung = Angka_ke1 - Angka_ke2;
+        } else if (TandaHitung == "*") {
+            Hasil_Hitung = Angka_ke1 * Angka_ke2;
+        } else if (TandaHitung == "/") {
+            Hasil_Hitung = Angka_ke1 / Angka_ke2;
         }
-        else if (TandaHitung == "-"){
-            Hasil_Hitung = Angka_ke1 - Angka_ke2 ;
-        }
-        else if (TandaHitung == "*"){
-            Hasil_Hitung = Angka_ke1 * Angka_ke2 ;
-        }
-        else if (TandaHitung == "/"){
-            Hasil_Hitung = Angka_ke1 / Angka_ke2 ;
-        }
-        
+
         String SHasil = Double.toString(Hasil_Hitung);
         NoxLayar_.setText(SHasil);
-            
+
         HilangkanWarnaTombol(true);
         NoxBtSamaDengan_.setBackground(Color.RED);
     }//GEN-LAST:event_NoxBtSamaDengan_ActionPerformed
 
     private void NoxBtAbout_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NoxBtAbout_ActionPerformed
         // TODO add your handling code here:
-        JOptionPane.showMessageDialog(rootPane, "Matkul Pemrograman lanjut\n"
+        new abot().setVisible(true); //memanggil form abot (About)
+        
+        /*JOptionPane.showMessageDialog(rootPane, "UAS Matkul Pemrograman lanjut\n"
                 + "Dosen: Pak Fahrur Rozi\n\n"
-                + "Soni Hendarkanto\n"
-                + "21183207051\n"
-                + "PTI 4B\n\n"
-                + "Bug:\n"
-                + "- [SUDAH FIX] Tombol persen (%) belum berfungsi, googling belum ketemu tutor codingnya", "Tentang Kalkulator ini", HEIGHT);
+                + "Kalkulator Sederhana + Converter Suhu Sederhana Juga   \n\n"
+                + "Soni Hendarkanto (PTI 4B)\n"
+                + "21183207051\n\n"
+                + "NB:\n"
+                + "Converter suhu hanya bisa satu arah, dari Celcius ke Lainnya,\n"
+                + "misal Celcius ke Farenheit,\n"
+                + "         Celcius ke Kelvin,\n"
+                + "         Celcius ke Reamur,\n\n"
+                + "Tidak bisa dari dari Farenheit ke Kelvin,\n"
+                + "atau dari Reamur ke Farenheit", "Tentang Kalkulator ini", HEIGHT);*/
     }//GEN-LAST:event_NoxBtAbout_ActionPerformed
 
     private void NoxBt7_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NoxBt7_ActionPerformed
         // TODO add your handling code here:
 
-            AturTextLayar("7");
-            HilangkanWarnaTombol(true);
-            NoxBt7_.setBackground(Color.GREEN);
+        AturTextLayar("7");
+        HilangkanWarnaTombol(true);
+        NoxBt7_.setBackground(Color.GREEN);
 
     }//GEN-LAST:event_NoxBt7_ActionPerformed
 
     private void NoxBt8_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NoxBt8_ActionPerformed
         // TODO add your handling code here:
 
-            AturTextLayar("8");
-            HilangkanWarnaTombol(true);
-            NoxBt8_.setBackground(Color.GREEN);
+        AturTextLayar("8");
+        HilangkanWarnaTombol(true);
+        NoxBt8_.setBackground(Color.GREEN);
 
     }//GEN-LAST:event_NoxBt8_ActionPerformed
 
     private void NoxBt4_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NoxBt4_ActionPerformed
         // TODO add your handling code here:
 
-            AturTextLayar("4");
-            HilangkanWarnaTombol(true);
-            NoxBt4_.setBackground(Color.GREEN);
+        AturTextLayar("4");
+        HilangkanWarnaTombol(true);
+        NoxBt4_.setBackground(Color.GREEN);
 
     }//GEN-LAST:event_NoxBt4_ActionPerformed
 
     private void NoxBt1_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NoxBt1_ActionPerformed
         // TODO add your handling code here:
 
-            AturTextLayar("1");
-            HilangkanWarnaTombol(true);
-            NoxBt1_.setBackground(Color.GREEN);
+        AturTextLayar("1");
+        HilangkanWarnaTombol(true);
+        NoxBt1_.setBackground(Color.GREEN);
 
     }//GEN-LAST:event_NoxBt1_ActionPerformed
 
     private void NoxBt0_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NoxBt0_ActionPerformed
         // TODO add your handling code here:
-            AturTextLayar("0");
-            HilangkanWarnaTombol(true);
-            NoxBt0_.setBackground(Color.GREEN);
+        AturTextLayar("0");
+        HilangkanWarnaTombol(true);
+        NoxBt0_.setBackground(Color.GREEN);
     }//GEN-LAST:event_NoxBt0_ActionPerformed
 
     private void NoxBtDelete_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NoxBtDelete_ActionPerformed
         // TODO add your handling code here:
         int PanjangAngka = NoxLayar_.getText().length();
         int DinasPajak = PanjangAngka - 1;
-        
-        if (PanjangAngka > 0){
+
+        if (PanjangAngka > 0) {
             StringBuilder HapusKarakter = new StringBuilder(NoxLayar_.getText());
             HapusKarakter.deleteCharAt(DinasPajak);
             NoxLayar_.setText(HapusKarakter.toString());
-        }              
-        
+        }
+
         HilangkanWarnaTombol(true);
         NoxBtDelete_.setBackground(Color.YELLOW);
     }//GEN-LAST:event_NoxBtDelete_ActionPerformed
@@ -783,11 +916,12 @@ public class NoxKalkulatorVersiDosenRozi extends javax.swing.JFrame {
         // TODO add your handling code here:
         Modiarrr();
         NoxLayar_.setText("");
+        jLabel1.setText("OFF");
     }//GEN-LAST:event_NoxRadioBtOff_ActionPerformed
 
     private void NoxBtAkarKuadrat_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NoxBtAkarKuadrat_ActionPerformed
         // TODO add your handling code here:
-        
+
         Angka_ke1 = Double.parseDouble(NoxLayar_.getText());
         Double AkarKuadrat = Math.sqrt(Angka_ke1);
         NoxLayar_.setText(Double.toString(AkarKuadrat));
@@ -795,7 +929,7 @@ public class NoxKalkulatorVersiDosenRozi extends javax.swing.JFrame {
 
     private void NoxBtAkarKubik_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NoxBtAkarKubik_ActionPerformed
         // Akar Kubik adalah akar 3, misal 27 hasilnya 3
-        
+
         Angka_ke1 = Double.parseDouble(NoxLayar_.getText());
         Double AkarKubik = Math.cbrt(Angka_ke1);
         NoxLayar_.setText(Double.toString(AkarKubik));
@@ -805,9 +939,9 @@ public class NoxKalkulatorVersiDosenRozi extends javax.swing.JFrame {
         // Rumus pangkat kuadrat adalah Math.pow(angka, 2) artinya angka x angka;
         // bisa juga Math.pow(angka, 3) artinya angka x angka x angka;
         // Math.pow(7, 4) artinya 7x7x7x7;
-        
+
         Angka_ke1 = Double.parseDouble(NoxLayar_.getText());
-        Double PangkatKuadrat = Math.pow(Angka_ke1,2);
+        Double PangkatKuadrat = Math.pow(Angka_ke1, 2);
         NoxLayar_.setText(Double.toString(PangkatKuadrat));
     }//GEN-LAST:event_NoxBtPangkatKuadrat_ActionPerformed
 
@@ -815,7 +949,80 @@ public class NoxKalkulatorVersiDosenRozi extends javax.swing.JFrame {
         // TODO add your handling code here:
         Muruppp();
         NoxLayar_.setText("0");
+        jLabel1.setText("Kalkulator Anti Mumet");
     }//GEN-LAST:event_NoxRadioBtOn_ActionPerformed
+
+    private void NoxRadioCelcius_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NoxRadioCelcius_ActionPerformed
+        // TODO add your handling code here:
+        NoxLayar_.setText("0");
+
+        NoxRadioFahrenheit_.setEnabled(true);
+        NoxRadioKelvin_.setEnabled(true);
+        NoxRadioReamur_.setEnabled(true);
+    }//GEN-LAST:event_NoxRadioCelcius_ActionPerformed
+
+    private void NoxRadioFahrenheit_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NoxRadioFahrenheit_ActionPerformed
+        // TODO add your handling code here:
+        LayarAwal = NoxLayar_.getText();
+
+        if (LayarAwal.equals("")) { //agar kalau layar kosong, tidak error
+            JOptionPane.showMessageDialog(null, "Maaf...\n"
+                    + "Angka di layar masih kosong");
+            NoxRadioCelcius_.setSelected(true);
+        } else {
+            NoxSuhuuuu = Double.valueOf(NoxLayar_.getText());
+            NoxFahrell = NoxSuhuuuu * 1.8 + 32;
+            NoxHasilSuhu = Double.toString(NoxFahrell);
+            NoxLayar_.setText(NoxHasilSuhu + " 'F");
+
+            //NoxRadioFahrenheit_.setEnabled(false);
+            NoxRadioKelvin_.setEnabled(false);
+            NoxRadioReamur_.setEnabled(false);
+            //NoxRadioCelcius_.setSelected(true);
+        }
+    }//GEN-LAST:event_NoxRadioFahrenheit_ActionPerformed
+
+    private void NoxRadioKelvin_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NoxRadioKelvin_ActionPerformed
+        // TODO add your handling code here:
+        LayarAwal = NoxLayar_.getText();
+
+        if (LayarAwal.equals("")) { //agar kalau layar kosong, tidak error
+            JOptionPane.showMessageDialog(null, "Maaf...\n"
+                    + "Angka di layar masih kosong");
+            NoxRadioCelcius_.setSelected(true);
+        } else {
+            NoxSuhuuuu = Double.valueOf(NoxLayar_.getText());
+            NoxKelvinSanjaya = NoxSuhuuuu + 273.15;
+            NoxHasilSuhu = Double.toString(NoxKelvinSanjaya);
+            NoxLayar_.setText(NoxHasilSuhu + " 'K");
+
+            NoxRadioFahrenheit_.setEnabled(false);
+            //NoxRadioKelvin_.setEnabled(false);
+            NoxRadioReamur_.setEnabled(false);
+            //NoxRadioCelcius_.setSelected(true);
+        }
+    }//GEN-LAST:event_NoxRadioKelvin_ActionPerformed
+
+    private void NoxRadioReamur_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NoxRadioReamur_ActionPerformed
+        // TODO add your handling code here:
+        LayarAwal = NoxLayar_.getText();
+
+        if (LayarAwal.equals("")) { //agar kalau layar kosong, tidak error
+            JOptionPane.showMessageDialog(null, "Maaf...\n"
+                    + "Angka di layar masih kosong");
+            NoxRadioCelcius_.setSelected(true);
+        } else {
+            NoxSuhuuuu = Double.valueOf(NoxLayar_.getText());
+            NoxRemunerasi = NoxSuhuuuu * 0.8;
+            NoxHasilSuhu = Double.toString(NoxRemunerasi);
+            NoxLayar_.setText(NoxHasilSuhu + " 'R");
+
+            NoxRadioFahrenheit_.setEnabled(false);
+            NoxRadioKelvin_.setEnabled(false);
+            //NoxRadioReamur_.setEnabled(false);
+            //NoxRadioCelcius_.setSelected(true);
+        }
+    }//GEN-LAST:event_NoxRadioReamur_ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -834,14 +1041,18 @@ public class NoxKalkulatorVersiDosenRozi extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(NoxKalkulatorVersiDosenRozi.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NoxUASJavaLanjut.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(NoxKalkulatorVersiDosenRozi.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NoxUASJavaLanjut.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(NoxKalkulatorVersiDosenRozi.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NoxUASJavaLanjut.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(NoxKalkulatorVersiDosenRozi.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NoxUASJavaLanjut.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -850,11 +1061,11 @@ public class NoxKalkulatorVersiDosenRozi extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new NoxKalkulatorVersiDosenRozi().setVisible(true);
+                new NoxUASJavaLanjut().setVisible(true);
             }
         });
     }
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton NoxBt0_;
     private javax.swing.JButton NoxBt1_;
@@ -882,9 +1093,17 @@ public class NoxKalkulatorVersiDosenRozi extends javax.swing.JFrame {
     private javax.swing.JTextField NoxLayar_;
     private javax.swing.JRadioButton NoxRadioBtOff_;
     private javax.swing.JRadioButton NoxRadioBtOn_;
+    private javax.swing.JRadioButton NoxRadioCelcius_;
+    private javax.swing.JRadioButton NoxRadioFahrenheit_;
+    private javax.swing.JRadioButton NoxRadioKelvin_;
+    private javax.swing.JRadioButton NoxRadioReamur_;
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JInternalFrame jInternalFrame1;
+    private javax.swing.ButtonGroup buttonGroupSuhu_;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JSeparator jSeparator1;
     // End of variables declaration//GEN-END:variables
 }
