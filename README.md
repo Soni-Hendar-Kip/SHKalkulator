@@ -7,16 +7,17 @@
 #
  Kalkulator Sederhana + Converter Suhu Sederhana Juga
 - Original coding dari pak dosen Rozi
-- Hanya sedikit merubah tampilan saja
  
  Juga tutor dari:
 - https://www.tutorialsfield.com/simple-calculator-program-in-java-using-swing/
 - https://www.duniaprogramming.com/2017/02/cara-membuat-program-kalkulator-keren.html
 - http://ngoding-java.blogspot.com/2016/02/membuat-aplikasi-konverter-suhu-dengan.html
+- https://arbysan.wordpress.com/2014/10/19/menampilkan-2-angka-belakang-koma-dengan-java/
 
  Nb:
+- Penambahan fungsi untuk membatasi 3 angka saja dibelakang desimal
 - Converter suhu hanya bisa satu arah, dari Celcius ke Lainnya,
-- misal:
+- Fungsi :
 	Celcius ke Farenheit,
 	Celcius ke Kelvin,
 	Celcius ke Reamur,
