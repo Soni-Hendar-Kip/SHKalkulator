@@ -25,11 +25,11 @@ import javax.swing.*;
  */
 public class NoxUASJavaLanjut extends javax.swing.JFrame {
 
-    String TandaHitung = ""; //untuk mewakili simbol operator hitung +-/*
+    String TandaHitung = ""; //untuk mewakili simbol operator hitung
     String LayarAwal; //untuk mewakili layar awal
     boolean FirstClick = false;
 
-    double Angka_ke1 = 0; //untuk mewakili angka pertama yg akan di hitung pada kalkulator
+    double Angka_ke1 = 0; //untuk mewakili angka pertama pada kalkulator
     double Angka_ke2 = 0; //untuk mewakili angka kedua
     double Hasil_Hitung; //untuk mewakili hasil perhitungan
 
@@ -64,7 +64,8 @@ public class NoxUASJavaLanjut extends javax.swing.JFrame {
     public void AturWarnaTombolAngka(boolean yes_or_no) {
         setBackground(Color.yellow);
     }
-
+    
+    // Fungsi untuk mengatur warna tombol
     public void HilangkanWarnaTombol(boolean yes_or_no) {
         NoxBt0_.setBackground(Color.LIGHT_GRAY);
         NoxBt1_.setBackground(Color.LIGHT_GRAY);
@@ -86,7 +87,8 @@ public class NoxUASJavaLanjut extends javax.swing.JFrame {
         NoxBtTambah_.setBackground(Color.magenta);
         NoxBtDelete_.setBackground(Color.blue);
     }
-
+    
+    // Fungsi untuk kondisi OFF
     public void Modiarrr() {
         NoxBt1_.setEnabled(false);
         NoxBt2_.setEnabled(false);
@@ -123,7 +125,8 @@ public class NoxUASJavaLanjut extends javax.swing.JFrame {
         jLabel3.setForeground(Color.GRAY);
         jLabel1.setForeground(Color.red);
     }
-
+    
+    // FUngsi untuk kondisi ON
     public void Muruppp() {
         NoxBt1_.setEnabled(true);
         NoxBt2_.setEnabled(true);
@@ -744,7 +747,7 @@ public class NoxUASJavaLanjut extends javax.swing.JFrame {
     }//GEN-LAST:event_NoxBt3_ActionPerformed
 
     private void NoxBtClear_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NoxBtClear_ActionPerformed
-        // TODO add your handling code here:
+        // Fungsi tombol Clear mengosongkan layar
         NoxLayar_.setText("");
 
         HilangkanWarnaTombol(true);
@@ -814,7 +817,7 @@ public class NoxUASJavaLanjut extends javax.swing.JFrame {
     }//GEN-LAST:event_NoxBtKoma_ActionPerformed
 
     private void NoxBtPersen_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NoxBtPersen_ActionPerformed
-        // TODO add your handling code here:
+        // Tombol persen
 
         Angka_ke2 = Double.parseDouble(NoxLayar_.getText());
         Hasil_Hitung = Angka_ke1 * Angka_ke2 / 100;
@@ -835,11 +838,11 @@ public class NoxUASJavaLanjut extends javax.swing.JFrame {
             Hasil_Hitung = Angka_ke1 / Angka_ke2;
         }
         
-        // agar menjadi dua angka saja dibelakang desimal
+        // agar menjadi tiga angka saja dibelakang koma desimal
         DecimalFormat ddd = new DecimalFormat("#.###"); //atur jumlah angka desimal di sini
         String Rungkad = ddd.format(Hasil_Hitung);
 
-        // menampilkan hasil yang telah di sunat desimal nya
+        // menampilkan hasil yang telah di kurangi digit desimal nya
         NoxLayar_.setText(Rungkad);
 
         HilangkanWarnaTombol(true);
@@ -847,7 +850,7 @@ public class NoxUASJavaLanjut extends javax.swing.JFrame {
     }//GEN-LAST:event_NoxBtSamaDengan_ActionPerformed
 
     private void NoxBtAbout_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NoxBtAbout_ActionPerformed
-        // TODO add your handling code here:
+        // Tombol About
         new abot().setVisible(true); //memanggil form abot (About)
 
         /*JOptionPane.showMessageDialog(rootPane, "UAS Matkul Pemrograman lanjut\n"
@@ -908,7 +911,7 @@ public class NoxUASJavaLanjut extends javax.swing.JFrame {
     }//GEN-LAST:event_NoxBt0_ActionPerformed
 
     private void NoxBtDelete_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NoxBtDelete_ActionPerformed
-        // TODO add your handling code here:
+        // Fungsi tombol DEL untuk menghapus satu digit dari kanan
         int PanjangAngka = NoxLayar_.getText().length();
         int DinasPajak = PanjangAngka - 1;
 
@@ -923,14 +926,14 @@ public class NoxUASJavaLanjut extends javax.swing.JFrame {
     }//GEN-LAST:event_NoxBtDelete_ActionPerformed
 
     private void NoxRadioBtOff_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NoxRadioBtOff_ActionPerformed
-        // TODO add your handling code here:
+        // Tombol OFF
         Modiarrr();
         NoxLayar_.setText("");
         jLabel1.setText("OFF");
     }//GEN-LAST:event_NoxRadioBtOff_ActionPerformed
 
     private void NoxBtAkarKuadrat_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NoxBtAkarKuadrat_ActionPerformed
-        // TODO add your handling code here:
+        // Fungsi Akar kuadrat
 
         Angka_ke1 = Double.parseDouble(NoxLayar_.getText());
         Double AkarKuadrat = Math.sqrt(Angka_ke1);
@@ -943,7 +946,7 @@ public class NoxUASJavaLanjut extends javax.swing.JFrame {
     }//GEN-LAST:event_NoxBtAkarKuadrat_ActionPerformed
 
     private void NoxBtAkarKubik_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NoxBtAkarKubik_ActionPerformed
-        // Akar Kubik adalah akar 3, misal 27 hasilnya 3
+        // Akar Kubik adalah akar 3, misal 27 akar kubiknya hasilnya 3
 
         Angka_ke1 = Double.parseDouble(NoxLayar_.getText());
         Double AkarKubik = Math.cbrt(Angka_ke1);
@@ -966,14 +969,14 @@ public class NoxUASJavaLanjut extends javax.swing.JFrame {
     }//GEN-LAST:event_NoxBtPangkatKuadrat_ActionPerformed
 
     private void NoxRadioBtOn_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NoxRadioBtOn_ActionPerformed
-        // TODO add your handling code here:
+        // tombol ON
         Muruppp();
         NoxLayar_.setText("0");
         jLabel1.setText("Kalkulator Anti Mumet");
     }//GEN-LAST:event_NoxRadioBtOn_ActionPerformed
 
     private void NoxRadioCelcius_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NoxRadioCelcius_ActionPerformed
-        // TODO add your handling code here:
+        // Tombol Celcius
         NoxLayar_.setText("0");
 
         NoxRadioFahrenheit_.setEnabled(true);
@@ -982,7 +985,7 @@ public class NoxUASJavaLanjut extends javax.swing.JFrame {
     }//GEN-LAST:event_NoxRadioCelcius_ActionPerformed
 
     private void NoxRadioFahrenheit_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NoxRadioFahrenheit_ActionPerformed
-        // TODO add your handling code here:
+        // Tombol Fahrenheit
         LayarAwal = NoxLayar_.getText();
 
         if (LayarAwal.equals("")) { //agar kalau layar kosong, tidak error
@@ -1008,7 +1011,7 @@ public class NoxUASJavaLanjut extends javax.swing.JFrame {
     }//GEN-LAST:event_NoxRadioFahrenheit_ActionPerformed
 
     private void NoxRadioKelvin_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NoxRadioKelvin_ActionPerformed
-        // TODO add your handling code here:
+        // TOmbol Kelvin
         LayarAwal = NoxLayar_.getText();
 
         if (LayarAwal.equals("")) { //agar kalau layar kosong, tidak error
@@ -1034,7 +1037,7 @@ public class NoxUASJavaLanjut extends javax.swing.JFrame {
     }//GEN-LAST:event_NoxRadioKelvin_ActionPerformed
 
     private void NoxRadioReamur_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NoxRadioReamur_ActionPerformed
-        // TODO add your handling code here:
+        // Tombol Reamur
         LayarAwal = NoxLayar_.getText();
 
         if (LayarAwal.equals("")) { //agar kalau layar kosong, tidak error
